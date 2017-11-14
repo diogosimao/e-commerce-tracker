@@ -1,0 +1,19 @@
+frontend:
+  build: frontend/
+  command: gulp
+  volumes:
+      - "./frontend:/frontend"
+      - "./frontend/build:/build"
+      - "./frontend/src:/src"      
+      - "./frontend/package.json:/package.json"
+      - "./frontend/gulpfile.js:/gulpfile.js"
+backend:
+    extends: 
+        file: common.yml
+        service: backend_base
+    ports:
+        - "8000:8000"
+    volumes:
+        - "./backend:/src"
+    environment:
+        DJANGO_SETTINGS_MODULE: tracker.settings
