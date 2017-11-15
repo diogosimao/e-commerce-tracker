@@ -15,7 +15,7 @@ Docker-compose, see https://docs.docker.com/compose/install/
 
 Stack
 =============
-* Python3
+* Python 3.5
 * pip
 * Django
 * AngularJS
@@ -23,6 +23,8 @@ Stack
 * Bootstrap3
 * Python3 Docker image
 * NodeJS Docker image
+* Nginx Docker image
+* Postgres Docker image
 
 Run development server
 =============
@@ -32,4 +34,21 @@ Run development server
 ./bin/development.sh
 ```
 
-App should be up on [http://172.17.0.2:4000](http://172.17.0.2:4000), served by Browsersync.
+App should be up on [http://localhost:8000](http://localhost:8000), served by Browsersync.
+
+
+Run production server
+==============
+
+```sh
+# build frontend,
+# collect django static files,
+./bin/build_prod_frontend.sh
+
+#stop production server
+./bin/stop_production.sh
+
+#start production server
+./bin/start_production.sh
+```
+App should be up on [http://localhost](http://localhost/)

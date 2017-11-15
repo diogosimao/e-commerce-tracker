@@ -1,7 +1,6 @@
 FROM node
 
-VOLUME ["/build"]
-VOLUME ["/frontend"]
+VOLUME ["/dist"]
 VOLUME ["/src"]
 
 WORKDIR /tmp

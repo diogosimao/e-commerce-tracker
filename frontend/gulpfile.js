@@ -69,19 +69,22 @@ gulp.task('build', ['html', 'browserify'], function() {
   return merge(html,js);
 });
 
-gulp.task('default', ['html', 'browserify'], function() {
+gulp.task('default', ['build'], function() {
 
-  browserSync.init(['./build/**/**.**'], {
-    server: "./build",
+
+  browserSync.init({
+    proxy: "backend:8000",
+
     port: 4000,
     notify: false,
+    
     ui: {
       port: 4001
     },
     open: false
   });
 
-  gulp.watch("src/index.html", ['html']);
-  gulp.watch(viewFiles, ['views']);
-  gulp.watch(jsFiles, ['browserify']);
+  gulp.watch("src/index.html", ['html', 'build']);
+  gulp.watch(viewFiles, ['views', 'build']);
+  gulp.watch(jsFiles, ['browserify', 'build']);
 });

@@ -1,0 +1,45 @@
+dbdata:
+    image: postgres
+    command: "true"
+
+db:
+    extends: 
+        file: common.yml
+        service: db_base
+    volumes_from:
+        - dbdata
+frontendprod:
+  build: frontend/
+  volumes:
+      - "./frontend:/frontend"
+      - "./frontend/dist:/dist"
+      - "./frontend/src:/src"      
+      - "./frontend/package.json:/package.json"
+      - "./frontend/gulpfile.js:/gulpfile.js"
+backendprod:
+    extends: 
+        file: common.yml
+        service: backend_base
+    entrypoint: []
+    command: gunicorn -c /etc/gunicorn/gunicorn.conf.py wsgi:application
+    volumes:
+        - "./backend:/src"
+        - "./frontend/dist:/static"
+        - "./conf/gunicorn.conf.py:/etc/gunicorn/gunicorn.conf.py:ro"
+        - "./logs/gunicorn:/tmp/logs/gunicorn"
+        - "./logs/app:/tmp/logs/app"
+    links:
+        - db
+    environment:
+        DJANGO_SETTINGS_MODULE: tracker.settings_prod
+        NUM_WORKERS: 4
+nginxprod:
+    image: nginx
+    links:
+        - backendprod
+    volumes:
+        - "./frontend/dist:/static:ro"
+        - "./logs/nginx:/tmp/logs"
+        - "./conf/nginx.conf:/etc/nginx/nginx.conf:ro"
+    ports:
+        - "80:80"

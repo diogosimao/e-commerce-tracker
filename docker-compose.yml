@@ -1,12 +1,29 @@
+dbdata:
+    image: postgres
+    command: "true"
+
+db:
+    extends: 
+        file: common.yml
+        service: db_base
+    volumes_from:
+        - dbdata
+    ports:
+        - "9432:5432"
 frontend:
   build: frontend/
   command: gulp
+  ports:
+        - "4000:4000"
+        - "4001:4001"
   volumes:
       - "./frontend:/frontend"
-      - "./frontend/build:/build"
+      - "./frontend/dist:/dist"
       - "./frontend/src:/src"      
       - "./frontend/package.json:/package.json"
       - "./frontend/gulpfile.js:/gulpfile.js"
+  links:
+      - "backend"
 backend:
     extends: 
         file: common.yml
@@ -15,5 +32,8 @@ backend:
         - "8000:8000"
     volumes:
         - "./backend:/src"
+        - "./frontend/dist:/static"
+    links:
+        - db
     environment:
         DJANGO_SETTINGS_MODULE: tracker.settings
