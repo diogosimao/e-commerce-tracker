@@ -3,7 +3,7 @@ function BuyConfig($stateProvider) {
 
   $stateProvider
   .state('app.buy', {
-    url: '/buy/:slug',
+    url: '/buy/',
     controller: 'BuyCtrl',
     controllerAs: '$ctrl',
     templateUrl: 'buy/buy.html',

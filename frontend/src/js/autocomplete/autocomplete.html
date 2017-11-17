@@ -1,0 +1,32 @@
+<div class="container page">
+    <h1>Autocomplete</h1>
+    <div layout="column" ng-cloak>
+      <md-content class="md-padding">
+        <form ng-submit="$event.preventDefault()">
+          <md-autocomplete
+            md-selected-item="$ctrl.selectedItem"
+            md-search-text="$ctrl.eventName"
+            md-items="item in $ctrl.querySearch($ctrl.eventName)"
+            md-item-text="item.name"
+            md-min-length="2"
+            placeholder="Search events"/>
+            <md-item-template>
+              <span class="item-title">
+                Event name: <span> {{item.name}} </span>
+              </span>
+              <span class="item-metadata">
+                <span>
+                  Date: <strong>{{item.created_at}}</strong>
+                </span>
+              </span>
+            </md-item-template>
+          </md-autocomplete>
+          <br/>
+        </form>
+      </md-content>
+    </div>
+
+</div>
+
+<br>
+<br>

@@ -10,8 +10,8 @@ Requirements
 Installation
 =============
 
-Docker, see https://docs.docker.com/installation/
-Docker-compose, see https://docs.docker.com/compose/install/
+* Docker, see https://docs.docker.com/installation/
+* Docker-compose, see https://docs.docker.com/compose/install/
 
 Stack
 =============
@@ -42,6 +42,7 @@ Run production server
 
 ```sh
 # build frontend,
+# build backend,
 # collect django static files,
 ./bin/build_prod_frontend.sh
 
@@ -51,4 +52,4 @@ Run production server
 #start production server
 ./bin/start_production.sh
 ```
-App should be up on [http://localhost](http://localhost/)
+App should be up on [http://localhost:8000/](http://localhost:8000/)
