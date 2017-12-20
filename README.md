@@ -44,10 +44,11 @@ Run production server
 # build frontend,
 # build backend,
 # collect django static files,
-./bin/build_prod_frontend.sh
+./bin/build_production.sh
 
-#stop production server
+#stop production and development server  
 ./bin/stop_production.sh
+./bin/stop_development.sh
 
 #start production server
 ./bin/start_production.sh
