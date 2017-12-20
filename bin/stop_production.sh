@@ -1,6 +1,6 @@
 #!/bin/bash
 # stop production server
 
-DOCKER_CONFIG=${DOCKER_CONFIG:-docker-compose-prod.yml}
-docker-compose -f $DOCKER_CONFIG stop
+export DOCKER_CONFIG_PROD=${DOCKER_CONFIG_PROD:-docker-compose-prod.yml}
+docker-compose -f $DOCKER_CONFIG_PROD stop
 echo "stopped"
