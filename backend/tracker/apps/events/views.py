@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, exceptions
 
 from .models import Event
 from .serializers import EventSerializer
@@ -18,5 +18,7 @@ class EventViewSet(viewsets.ModelViewSet):
         event_name = self.request.query_params.get('event_name', None)
         if event_name is not None and len(event_name) >= 2:
             queryset = Event.objects.filter(name__icontains=event_name)
+        else:
+            raise exceptions.ParseError("Event name not supplied")
         return queryset
 
