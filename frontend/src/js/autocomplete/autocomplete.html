@@ -6,7 +6,7 @@
           <md-autocomplete
             md-selected-item="$ctrl.selectedItem"
             md-search-text="$ctrl.eventName"
-            md-items="item in $ctrl.querySearch($ctrl.eventName)"
+            md-items="item in $ctrl.querySearch($ctrl.eventName, $ctrl.selected)"
             md-item-text="item.name"
             md-min-length="2"
             placeholder="Search events"/>
@@ -18,10 +18,21 @@
                 <span>
                   Date: <strong>{{item.created_at}}</strong>
                 </span>
+                <span>
+                  Quantity: <strong>{{item.event_count}}</strong>
+                </span>
+                <span>
+                  Month: <strong>{{item.month}}</strong>
+                </span>
               </span>
             </md-item-template>
           </md-autocomplete>
           <br/>
+          <md-radio-group ng-model="$ctrl.selected" layout="row">
+            <md-radio-button ng-repeat="g in $ctrl.groupOptions" ng-value="g.value" aria-label="{{ g.label }}">
+              {{ g.label }}
+            </md-radio-button>
+          </md-radio-group>
         </form>
       </md-content>
     </div>
