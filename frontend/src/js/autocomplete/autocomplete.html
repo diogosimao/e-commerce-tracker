@@ -9,7 +9,8 @@
             md-items="item in $ctrl.querySearch($ctrl.eventName, $ctrl.selected)"
             md-item-text="item.name"
             md-min-length="2"
-            placeholder="Search events"/>
+            placeholder="Search events"
+            md-no-cache="$ctrl.noCache"/>
             <md-item-template>
               <span class="item-title">
                 Event name: <span> {{item.name}} </span>
@@ -28,6 +29,11 @@
             </md-item-template>
           </md-autocomplete>
           <br/>
+          <md-checkbox ng-model="$ctrl.noCache">Disable caching of queries?</md-checkbox>
+          <br/>
+          <span>
+            <strong>Group by</strong>
+          </span>          
           <md-radio-group ng-model="$ctrl.selected" layout="row">
             <md-radio-button ng-repeat="g in $ctrl.groupOptions" ng-value="g.value" aria-label="{{ g.label }}">
               {{ g.label }}

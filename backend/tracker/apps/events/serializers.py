@@ -16,6 +16,6 @@ class EventGroupSerializer(ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ('name', 'month', 'event_count', )
-        read_only_fields = ('name', 'month', 'event_count',)
+        fields = ('name', 'created_at', 'month', 'event_count', )
+        read_only_fields = ('name', 'created_at', 'month', 'event_count',)
 
