@@ -10,10 +10,7 @@ class EventQueryJSONRenderer(renderers.JSONRenderer):
 
         # Name the object list
         for obj in data:
-            print(obj.get('month'))
-            obj = dict(obj)
-            if obj.get('month'):
-
+            if obj.get('month', None):
                 datetime_object = datetime.strptime(obj.get('month')[:10], '%Y-%m-%d')
                 obj['month'] = format_date(datetime_object, 'MMMM', locale='pt_br')
             new_rows.append(obj)
