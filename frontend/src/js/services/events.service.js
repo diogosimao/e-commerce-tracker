@@ -16,11 +16,11 @@ export default class Events {
     return this._$http(request).then((res) => res.data.name);
   }
 
-  searchEvent(eventName, $q) {
+  searchEvent(eventName, eventGroup, $q) {
     let request = {
-      url: `${this._AppConstants.api}/events`,
+      url: `${this._AppConstants.api}/events_search`,
       method: 'GET',
-      params: {event_name: eventName}
+      params: {event_name: eventName, event_group: eventGroup}
     };
 
     this.events = [];
