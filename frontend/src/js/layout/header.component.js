@@ -3,6 +3,11 @@ class AppHeaderCtrl {
     'ngInject';
 
     this.appName = AppConstants.appName;
+    this.isIn = false;
+  }
+  toggleState() { // click handler
+    let bool = this.isIn;
+    this.isIn = bool === false ? true : false; 
   }
 }
 

@@ -1,54 +1,64 @@
-<nav class="navbar navbar-light">
+
+<nav class="navbar navbar-default" role="navigation">
   <div class="container">
-
-    <a class="navbar-brand"
-      ui-sref="app.home"
-      ng-bind="::$ctrl.appName | lowercase">
-    </a>
-
-
-    <ul class="nav navbar-nav pull-xs-right">
-
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.autocomplete">
-          Autocomplete
+    <div class="navbar-inner">    
+      <div class="navbar-header">
+        <a class="navbar-brand"
+          ui-sref="app.home"
+          ng-bind="::$ctrl.appName | lowercase">
         </a>
-      </li>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" ng-click="$ctrl.toggleState()">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.buy">
-          Buy
-        </a>
-      </li>
+      <div id="navbar" class="collapse navbar-collapse" ng-class="{ 'in': $ctrl.isIn }">
+        <ul class="nav navbar-nav">
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.sell">
-          Sell
-        </a>
-      </li>
+          <li class="nav-item">
+            <a class="nav-link"
+              ui-sref-active="active"
+              ui-sref="app.autocomplete">
+              Autocomplete
+            </a>
+          </li>
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.sale">
-          Sale
-        </a>
-      </li>
+          <li class="nav-item">
+            <a class="nav-link"
+              ui-sref-active="active"
+              ui-sref="app.buy">
+              Buy
+            </a>
+          </li>
 
-      <li class="nav-item">
-        <a class="nav-link"
-          ui-sref-active="active"
-          ui-sref="app.deals">
-          Deals
-        </a>
-      </li>
-    </ul>
+          <li class="nav-item">
+            <a class="nav-link"
+              ui-sref-active="active"
+              ui-sref="app.sell">
+              Sell
+            </a>
+          </li>
 
+          <li class="nav-item">
+            <a class="nav-link"
+              ui-sref-active="active"
+              ui-sref="app.sale">
+              Sale
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link"
+              ui-sref-active="active"
+              ui-sref="app.deals">
+              Deals
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>    
   </div>
 </nav>
