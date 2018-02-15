@@ -1,30 +1,22 @@
-e-commerce-tracker - Django + Angular
+e-commerce-tracker
 =====================================================
-
-
-Requirements
-=============
-* Docker CE (lastest)
-* Docker-compose (latest)
-
-Installation
-=============
-
-* Docker, see https://docs.docker.com/installation/
-* Docker-compose, see https://docs.docker.com/compose/install/
 
 Stack
 =============
-* Python 3.5
+
+* pipenv
 * pip
-* Django
-* AngularJS
-* GulpJS
-* Bootstrap3
-* Python3 Docker image
-* NodeJS Docker image
-* Nginx Docker image
-* Postgres Docker image
+* Python 3.6
+
+Docker setup requirements 
+=============================
+
+* Docker CE (lastest) installed
+    * Installation    
+        * Docker, see [here](https://docs.docker.com/installation/)
+    
+    * Used Docker images:
+        * Python, Postgres, Nginx, Node
 
 Run development server
 =============
@@ -35,7 +27,6 @@ Run development server
 ```
 
 App should be up on [http://localhost:8000](http://localhost:8000), served by Browsersync.
-
 
 Run production server
 ==============
