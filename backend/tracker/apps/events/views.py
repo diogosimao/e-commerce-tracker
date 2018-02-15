@@ -32,9 +32,18 @@ class EventQuerySet(generics.ListAPIView):
 
         event_group = self.request.query_params.get('event_group', None)
         if event_group is not None:
+            if event_group == '1':
+                queryset = queryset.values('name',)\
+                    .annotate(event_count=Count('name'), day=TruncMonth('created_at'))
+            if event_group == '2':
+                queryset = queryset.values('name',)\
+                    .annotate(event_count=Count('name'), week=TruncMonth('created_at'))
             if event_group == '3':
                 queryset = queryset.values('name',)\
                     .annotate(event_count=Count('name'), month=TruncMonth('created_at'))
+            if event_group == '4':
+                queryset = queryset.values('name',)\
+                    .annotate(event_count=Count('name'), year=TruncMonth('created_at'))
 
         return queryset
 

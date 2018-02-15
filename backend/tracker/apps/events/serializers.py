@@ -12,10 +12,13 @@ class EventSerializer(ModelSerializer):
 
 class EventGroupSerializer(ModelSerializer):
     event_count = serializers.IntegerField(read_only=True,)
+    day = serializers.DateTimeField(read_only=True)
+    week = serializers.DateTimeField(read_only=True)
     month = serializers.DateTimeField(read_only=True)
+    year = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Event
-        fields = ('name', 'created_at', 'month', 'event_count', )
-        read_only_fields = ('name', 'created_at', 'month', 'event_count',)
+        fields = ('name', 'created_at', 'day', 'week', 'month', 'year', 'event_count', )
+        read_only_fields = ('name', 'created_at', 'day', 'week', 'month', 'year', 'event_count',)
 
