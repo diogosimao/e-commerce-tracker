@@ -11,7 +11,7 @@ class EventQueryJSONRenderer(renderers.JSONRenderer):
         for obj in data:
             if obj.get('day', None):
                 datetime_object = datetime.strptime(obj.get('day')[:10], '%Y-%m-%d')
-                obj['day'] = format_date(datetime_object, 'DD', locale='en')
+                obj['day'] = datetime_object.day
             if obj.get('week', None):
                 datetime_object = datetime.strptime(obj.get('week')[:-1], '%Y-%m-%d-%w')
                 obj['week'] = format_date(datetime_object, 'WW', locale='en')
@@ -20,7 +20,7 @@ class EventQueryJSONRenderer(renderers.JSONRenderer):
                 obj['month'] = format_date(datetime_object, 'MMMM', locale='en')
             if obj.get('year', None):
                 datetime_object = datetime.strptime(obj.get('year')[:10], '%Y-%m-%d')
-                obj['year'] = format_date(datetime_object, 'YYYY', locale='en')
+                obj['year'] = datetime_object.year
             new_rows.append(obj)
 
         data = new_rows
