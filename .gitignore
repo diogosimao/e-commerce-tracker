@@ -141,3 +141,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+#PyCharm
+.idea/

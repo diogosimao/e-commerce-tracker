@@ -8,8 +8,18 @@ Stack
 * pip
 * Python 3.6
 
+Run with pipenv
+===============
+
+    $ pipenv --three && pipenv shell
+    $ pipenv install -r requirements_docker.txt
+
+if necessary:
+
+    $ pipenv install -r backend/requirements.txt
+
 Docker setup requirements 
-=============================
+==========================
 
 * Docker CE (lastest) installed
     * Installation    
@@ -18,8 +28,8 @@ Docker setup requirements
     * Used Docker images:
         * Python, Postgres, Nginx, Node
 
-Run development server
-=============
+Run development server with docker
+==================================
 
 ```sh
 # start django dev server & frontend builder
@@ -29,7 +39,7 @@ Run development server
 App should be up on [http://localhost:8000](http://localhost:8000), served by Browsersync.
 
 Run production server
-==============
+=====================
 
 ```sh
 # build frontend,
